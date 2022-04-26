@@ -11,7 +11,7 @@ import java.util.Date;
  * @author Mariana Rocha
  */
 public class Task {
-    
+
     private int id;
     private int idProject;
     private String name;
@@ -33,7 +33,7 @@ public class Task {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
-    
+
     public Task() {
         this.createdAt = new Date();
     }
@@ -114,7 +114,5 @@ public class Task {
     public String toString() {
         return "Task{" + "id=" + id + ", idProject=" + idProject + ", name=" + name + ", description=" + description + ", notes=" + notes + ", isCompleted=" + isCompleted + ", deadLine=" + deadLine + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + '}';
     }
-    
-        
-    
+
 }

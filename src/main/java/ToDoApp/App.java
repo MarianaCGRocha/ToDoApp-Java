@@ -3,7 +3,32 @@
  */
 package ToDoApp;
 
+import java.util.Date;
+import controller.ProjectController;
+import controller.TaskController;
+import model.Project;
+import model.Task;
+
 
 public class App {
+    
+     public static void main(String[] args) {
+    
+    ProjectController projectController = new ProjectController();
+
+    Project project = new Project();
+    project.setName("Projeto Teste");
+    project.setDescription("description");
+    project.setCreatedAt(new Date());
+    project.setUpdatedAt(new Date());
+    projectController.save(project);   
+
+    //project.setName("Novo nome do projeto");
+    //projectController.update(project);
+
+    //List<Project> projects = projectController.getAll();
+    //System.out.println("Total de Projetos = " + projects.size());
+    
+}
     
     }
