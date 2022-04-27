@@ -20,13 +20,13 @@ import util.ConnectionFactory;
 public class TaskController {
     
     public void save(Task task) throws Exception {
-        String SQL = "INSERT INTO TASKS (idProject"
-                + "name"
-                + "description"
-                + "completed"
-                + "notes"
-                + "deadLine"
-                + "createdAt"
+        String SQL = "INSERT INTO tasks (idProject,"
+                + "name,"
+                + "description,"
+                + "completed,"
+                + "notes,"
+                + "deadLine,"
+                + "createdAt,"
                 + "updatedAt) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         
         Connection connection = null;
@@ -53,16 +53,16 @@ public class TaskController {
     }
     
     public void update(Task task) {
-        String sql = "UPDATE tasks SET"
-                + "idProject = ?"
-                + "name = ?"
-                + "description = ?"
-                + "notes = ?"
-                + "completed = ?"
-                + "deadLine = ?"
-                + "createdAt = ?"
-                + "updatedAt =?"
-                + "WHERE id = ?";
+        String sql = "UPDATE tasks SET "
+                        + "idProject = ?, "
+                        + "name = ?, "
+                        + "description = ?, "
+                        + "notes = ?, "
+                        + "completed = ?, "
+                        + "deadline = ?, "
+                        + "createdAt = ?, "
+                        + "updatedAt = ? "
+                        + "WHERE id = ?";
         Connection connection = null;
         PreparedStatement statement = null;
         
@@ -77,7 +77,7 @@ public class TaskController {
             statement.setString(3, task.getDescription());
             statement.setString(4, task.getNotes());
             statement.setBoolean(5, task.isIsCompleted());
-            statement.setDate(6, new Date(task.getCreatedAt().getTime()));
+            statement.setDate(6, new Date(task.getDeadLine().getTime()));
             statement.setDate(7, new Date(task.getCreatedAt().getTime()));
             statement.setDate(8, new Date(task.getUpdatedAt().getTime()));
             statement.setInt(9, task.getId());

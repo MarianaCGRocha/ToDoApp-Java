@@ -45,12 +45,12 @@ public class ProjectController {
     }
 
     public void update(Project project) {
-        String sql = "UPDATE projects SET"
-                + "name = ?,"
-                + "description = ?,"
-                + "createdAt = ?,"
-                + "updatedAt =?,"
-                + "WHERE id = ?";
+        String sql = "UPDATE projects SET "
+                        + "name = ?, "
+                        + "description = ?, "
+                        + "createdAt = ?, "
+                        + "updatedAt = ? "
+                        + "WHERE id = ?";
         Connection connection = null;
         PreparedStatement statement = null;
 
