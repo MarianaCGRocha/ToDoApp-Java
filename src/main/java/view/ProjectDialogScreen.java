@@ -38,6 +38,9 @@ public class ProjectDialogScreen extends javax.swing.JDialog {
         jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(323, 384));
+        setMinimumSize(new java.awt.Dimension(323, 384));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 102));
 
@@ -74,7 +77,7 @@ public class ProjectDialogScreen extends javax.swing.JDialog {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Nome");
 
@@ -82,7 +85,7 @@ public class ProjectDialogScreen extends javax.swing.JDialog {
         jTextField1.setForeground(new java.awt.Color(51, 51, 51));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("Descrição");
 

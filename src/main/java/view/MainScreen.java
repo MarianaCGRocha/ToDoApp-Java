@@ -4,6 +4,9 @@
  */
 package view;
 
+import java.awt.Font;
+import java.awt.Color;
+
 /**
  *
  * @author Mariana Rocha
@@ -15,6 +18,7 @@ public class MainScreen extends javax.swing.JFrame {
      */
     public MainScreen() {
         initComponents();
+        decorateTableTask();
     }
 
     /**
@@ -44,7 +48,7 @@ public class MainScreen extends javax.swing.JFrame {
         JListProjects = new javax.swing.JList<>();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableTasks = new javax.swing.JTable();
 
         jPanelEmptyList.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -87,7 +91,7 @@ public class MainScreen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 153, 153));
         setMaximumSize(new java.awt.Dimension(3000, 6000));
-        setMinimumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(900, 600));
 
         JPanelToolbar.setBackground(new java.awt.Color(0, 153, 102));
 
@@ -218,10 +222,10 @@ public class MainScreen extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTable1.setAutoCreateRowSorter(true);
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setForeground(new java.awt.Color(0, 153, 102));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableTasks.setAutoCreateRowSorter(true);
+        jTableTasks.setBackground(new java.awt.Color(255, 255, 255));
+        jTableTasks.setForeground(new java.awt.Color(0, 153, 102));
+        jTableTasks.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -247,19 +251,21 @@ public class MainScreen extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setGridColor(new java.awt.Color(0, 153, 102));
-        jTable1.setSelectionBackground(new java.awt.Color(0, 153, 102));
-        jTable1.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jTable1.setShowGrid(true);
-        jTable1.setShowHorizontalLines(true);
-        jScrollPane1.setViewportView(jTable1);
+        jTableTasks.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTableTasks.setGridColor(new java.awt.Color(153, 153, 153));
+        jTableTasks.setRowHeight(40);
+        jTableTasks.setSelectionBackground(new java.awt.Color(0, 153, 102));
+        jTableTasks.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        jTableTasks.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTableTasks.setShowGrid(true);
+        jTableTasks.setShowVerticalLines(false);
+        jScrollPane1.setViewportView(jTableTasks);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 661, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,7 +317,7 @@ public class MainScreen extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Java swing".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -354,6 +360,18 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelEmptyList;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPaneProjects;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableTasks;
     // End of variables declaration//GEN-END:variables
+
+    public void decorateTableTask() {
+        jTableTasks.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14));
+        jTableTasks.getTableHeader().setBackground(new Color(0,153,102));
+        jTableTasks.getTableHeader().setForeground(new Color(255, 255, 255));
+                
+        //Cria um ordenador na coluna especificada (sort data)
+        jTableTasks.setAutoCreateRowSorter(true);
+                
+    }
+        
 }
+
