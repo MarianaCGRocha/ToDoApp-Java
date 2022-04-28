@@ -4,8 +4,13 @@
  */
 package view;
 
+import controller.ProjectController;
+import controller.TaskController;
 import java.awt.Font;
 import java.awt.Color;
+import java.util.List;
+import javax.swing.DefaultListModel;
+import model.Project;
 import view.ProjectDialogScreen;
 import view.TaskDialogScreen;
 
@@ -15,12 +20,17 @@ import view.TaskDialogScreen;
  */
 public class MainScreen extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainScreen
-     */
+    ProjectController projectController;
+    TaskController taskController;
+    
+    DefaultListModel projectModel;
+
     public MainScreen() {
         initComponents();
         decorateTableTask();
+
+        initDataController();
+        initComponentsModel();
     }
 
     /**
@@ -204,7 +214,7 @@ public class MainScreen extends javax.swing.JFrame {
         JListProjects.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         JListProjects.setForeground(new java.awt.Color(51, 51, 51));
         JListProjects.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { " " };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -391,13 +401,34 @@ public class MainScreen extends javax.swing.JFrame {
 
     public void decorateTableTask() {
         jTableTasks.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14));
-        jTableTasks.getTableHeader().setBackground(new Color(0,153,102));
+        jTableTasks.getTableHeader().setBackground(new Color(0, 153, 102));
         jTableTasks.getTableHeader().setForeground(new Color(255, 255, 255));
-                
+
         //Cria um ordenador na coluna especificada (sort data)
         jTableTasks.setAutoCreateRowSorter(true);
-                
-    }
-        
-}
 
+    }
+
+    public void initDataController() {
+        projectController = new ProjectController();
+        taskController = new TaskController();
+    }
+    
+    public void initComponentsModel() {
+        projectModel = new DefaultListModel();
+        loadProjects();
+    }
+    
+    public void loadProjects() {
+        List<Project> projects = projectController.getAll();
+        //Limpa o projectModel para adicionar novos dados sem interferência
+        projectModel.clear();
+        //Precorre a Array instalando todos os projetos existentes nessa lista
+        for( int i = 0; i < projects.size() - 1; i++ ) {
+            Project project = projects.get(i);
+            projectModel.addElement(project);
+        }
+        JListProjects.setModel(projectModel);
+    }
+
+}
