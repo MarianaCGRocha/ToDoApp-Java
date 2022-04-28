@@ -15,14 +15,14 @@ public class App {
     
      public static void main(String[] args) throws Exception {
     
-    ProjectController projectController = new ProjectController();
-
-    Project project = new Project();
-    project.setName("Projeto Teste 2");
-    project.setDescription("description");
-    project.setCreatedAt(new Date());
-    project.setUpdatedAt(new Date());
-    projectController.save(project);
+//    ProjectController projectController = new ProjectController();
+//
+//    Project project = new Project();
+//    project.setName("Projeto Teste 2");
+//    project.setDescription("description");
+//    project.setCreatedAt(new Date());
+//    project.setUpdatedAt(new Date());
+//    projectController.save(project);
 //    
 //    ProjectController projectController = new ProjectController();
 //
@@ -42,9 +42,9 @@ public class App {
 //    projectController.removeById(1);
 //    
 //
-    TaskController taskController = new TaskController();
+//    TaskController taskController = new TaskController();
 //    
-    Task task = new Task();
+//    Task task = new Task();
 //    task.setIdProject(2);
 //    task.setDescription("description");
 //    task.setName("Criar Telas da Aplicação");
@@ -56,18 +56,18 @@ public class App {
 //    
 //    taskController.save(task);
 //    
-    task.setName("Alterar telas de Aplicação");
-    task.setIdProject(2);
-    task.setDescription("hello");
-    task.setNotes("notes");
-    task.setIsCompleted(false);
-    task.setDeadLine(new Date());
-    task.setUpdatedAt(new Date());
-    task.setCreatedAt(new Date());
-    taskController.update(task);
-    
-    List<Task> tasks = taskController.getAll(2);
-    System.out.println("Total de tarefas = " + tasks.size());
+//    task.setName("Alterar telas de Aplicação");
+//    task.setIdProject(2);
+//    task.setDescription("hello");
+//    task.setNotes("notes");
+//    task.setIsCompleted(false);
+//    task.setDeadLine(new Date());
+//    task.setUpdatedAt(new Date());
+//    task.setCreatedAt(new Date());
+//    taskController.update(task);
+//    
+//    List<Task> tasks = taskController.getAll(2);
+//    System.out.println("Total de tarefas = " + tasks.size());
 
 }
     

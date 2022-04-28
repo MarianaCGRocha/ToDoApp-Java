@@ -6,6 +6,8 @@ package view;
 
 import java.awt.Font;
 import java.awt.Color;
+import view.ProjectDialogScreen;
+import view.TaskDialogScreen;
 
 /**
  *
@@ -134,6 +136,11 @@ public class MainScreen extends javax.swing.JFrame {
 
         JLabelProjectsAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add/add (5).png"))); // NOI18N
         JLabelProjectsAdd.setToolTipText("Adicionar um novo projeto");
+        JLabelProjectsAdd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JLabelProjectsAddMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout JPanelProjectLayout = new javax.swing.GroupLayout(JPanelProject);
         JPanelProject.setLayout(JPanelProjectLayout);
@@ -164,6 +171,11 @@ public class MainScreen extends javax.swing.JFrame {
 
         JLabelTasksAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add/add (5).png"))); // NOI18N
         JLabelTasksAdd.setToolTipText("Adicionar uma nova tarefa");
+        JLabelTasksAdd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JLabelTasksAddMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout JPanelTasksLayout = new javax.swing.GroupLayout(JPanelTasks);
         JPanelTasks.setLayout(JPanelTasksLayout);
@@ -305,6 +317,20 @@ public class MainScreen extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void JLabelProjectsAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLabelProjectsAddMouseClicked
+        // TODO add your handling code here:
+        ProjectDialogScreen projectDialogScreen = new ProjectDialogScreen(this, rootPaneCheckingEnabled);
+        projectDialogScreen.setVisible(true);
+    }//GEN-LAST:event_JLabelProjectsAddMouseClicked
+
+    private void JLabelTasksAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLabelTasksAddMouseClicked
+        // TODO add your handling code here:
+        //Cria uma nova tela de adição de Tasks
+        TaskDialogScreen taskDialogScreen = new TaskDialogScreen(this, rootPaneCheckingEnabled);
+        //taskDialogScreen.setProject(null);
+        taskDialogScreen.setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_JLabelTasksAddMouseClicked
 
     /**
      * @param args the command line arguments
