@@ -8,6 +8,8 @@ import controller.ProjectController;
 import controller.TaskController;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import model.Project;
@@ -22,7 +24,7 @@ public class MainScreen extends javax.swing.JFrame {
 
     ProjectController projectController;
     TaskController taskController;
-    
+
     DefaultListModel projectModel;
 
     public MainScreen() {
@@ -331,7 +333,15 @@ public class MainScreen extends javax.swing.JFrame {
     private void JLabelProjectsAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLabelProjectsAddMouseClicked
         // TODO add your handling code here:
         ProjectDialogScreen projectDialogScreen = new ProjectDialogScreen(this, rootPaneCheckingEnabled);
+        //Após a criação da tela dialog de criação de projetos, determina que ela seja visível.
         projectDialogScreen.setVisible(true);
+        //Adiciona um Listener na janela do Dialog, quando a janela for fechada ele carrega a lista de projetos para o view (DB > ProjectModel).
+        projectDialogScreen.addWindowListener(new WindowAdapter() {
+            public void windowClosed(WindowEvent e) {
+                //Uma vez que a janela dialog project é fechada, atualiza o model de projetos no view.
+                loadProjects();
+            }
+        });
     }//GEN-LAST:event_JLabelProjectsAddMouseClicked
 
     private void JLabelTasksAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLabelTasksAddMouseClicked
@@ -413,18 +423,18 @@ public class MainScreen extends javax.swing.JFrame {
         projectController = new ProjectController();
         taskController = new TaskController();
     }
-    
+
     public void initComponentsModel() {
         projectModel = new DefaultListModel();
         loadProjects();
     }
-    
+
     public void loadProjects() {
         List<Project> projects = projectController.getAll();
         //Limpa o projectModel para adicionar novos dados sem interferência
         projectModel.clear();
         //Precorre a Array instalando todos os projetos existentes nessa lista
-        for( int i = 0; i < projects.size() - 1; i++ ) {
+        for (int i = 0; i < projects.size(); i++) {
             Project project = projects.get(i);
             projectModel.addElement(project);
         }
