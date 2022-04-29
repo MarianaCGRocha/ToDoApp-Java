@@ -13,6 +13,8 @@ import java.awt.event.WindowEvent;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import model.Project;
+import model.Task;
+import util.TaskTableModel;
 import view.ProjectDialogScreen;
 import view.TaskDialogScreen;
 
@@ -25,7 +27,8 @@ public class MainScreen extends javax.swing.JFrame {
     ProjectController projectController;
     TaskController taskController;
 
-    DefaultListModel projectModel;
+    DefaultListModel projectsModel;
+    TaskTableModel tasksModel;
 
     public MainScreen() {
         initComponents();
@@ -251,20 +254,20 @@ public class MainScreen extends javax.swing.JFrame {
         jTableTasks.setForeground(new java.awt.Color(0, 153, 102));
         jTableTasks.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Nome", "Descrição", "Prazo", "Tarefa Concluída", "Editar", "Excluir"
+                "Nome", "Descrição", "Prazo", "Tarefa Concluída"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, false, false
+                false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -282,6 +285,7 @@ public class MainScreen extends javax.swing.JFrame {
         jTableTasks.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jTableTasks.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTableTasks.setShowGrid(true);
+        jTableTasks.setShowHorizontalLines(false);
         jTableTasks.setShowVerticalLines(false);
         jScrollPane1.setViewportView(jTableTasks);
 
@@ -425,20 +429,30 @@ public class MainScreen extends javax.swing.JFrame {
     }
 
     public void initComponentsModel() {
-        projectModel = new DefaultListModel();
+        projectsModel = new DefaultListModel();
         loadProjects();
+        
+        tasksModel = new TaskTableModel();
+        jTableTasks.setModel(tasksModel);
+        loadTasks();
+    }
+    
+    //Carrega todas as tarefas do projeto selecionado na TaskTableModel
+    public void loadTasks() {
+        List<Task> tasks = taskController.getAll(2);
+        tasksModel.setTasks(tasks);
     }
 
     public void loadProjects() {
         List<Project> projects = projectController.getAll();
         //Limpa o projectModel para adicionar novos dados sem interferência
-        projectModel.clear();
+        projectsModel.clear();
         //Precorre a Array instalando todos os projetos existentes nessa lista
         for (int i = 0; i < projects.size(); i++) {
             Project project = projects.get(i);
-            projectModel.addElement(project);
+            projectsModel.addElement(project);
         }
-        JListProjects.setModel(projectModel);
+        JListProjects.setModel(projectsModel);
     }
 
 }
