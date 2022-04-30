@@ -287,6 +287,11 @@ public class MainScreen extends javax.swing.JFrame {
         jTableTasks.setShowGrid(true);
         jTableTasks.setShowHorizontalLines(false);
         jTableTasks.setShowVerticalLines(false);
+        jTableTasks.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableTasksMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableTasks);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -355,6 +360,23 @@ public class MainScreen extends javax.swing.JFrame {
         //taskDialogScreen.setProject(null);
         taskDialogScreen.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_JLabelTasksAddMouseClicked
+
+    private void jTableTasksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTasksMouseClicked
+        // TODO add your handling code here:
+        int rowIndex = jTableTasks.rowAtPoint(evt.getPoint());
+        int columnIndex = jTableTasks.columnAtPoint(evt.getPoint());
+
+        switch (columnIndex) {
+            case 3:
+                Task task = tasksModel.getTasks().get(rowIndex);
+                taskController.update(task);
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+        }
+    }//GEN-LAST:event_jTableTasksMouseClicked
 
     /**
      * @param args the command line arguments
@@ -431,12 +453,12 @@ public class MainScreen extends javax.swing.JFrame {
     public void initComponentsModel() {
         projectsModel = new DefaultListModel();
         loadProjects();
-        
+
         tasksModel = new TaskTableModel();
         jTableTasks.setModel(tasksModel);
         loadTasks();
     }
-    
+
     //Carrega todas as tarefas do projeto selecionado na TaskTableModel
     public void loadTasks() {
         List<Task> tasks = taskController.getAll(2);

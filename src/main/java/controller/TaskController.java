@@ -20,7 +20,7 @@ import util.ConnectionFactory;
 public class TaskController {
     
     public void save(Task task) throws Exception {
-        String SQL = "INSERT INTO tasks (idProject,"
+        String sql = "INSERT INTO tasks (idProject,"
                 + "name,"
                 + "description,"
                 + "completed,"
@@ -35,7 +35,7 @@ public class TaskController {
         try {
             //Cria a conexão e o statement e carrega as informações para o statement
             connection = ConnectionFactory.getConnection();
-            statement = connection.prepareStatement(SQL);
+            statement = connection.prepareStatement(sql);
             statement.setInt(1, task.getIdProject());
             statement.setString(2, task.getName());
             statement.setString(3, task.getDescription());

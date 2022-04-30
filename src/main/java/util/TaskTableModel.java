@@ -93,6 +93,17 @@ public class TaskTableModel extends AbstractTableModel {
         }
 
     }
+    
+    @Override
+    public void setValueAt(Object aValue, int columnIndex, int rowIndex){
+        //Método da classe Pai AbstractTableModel
+        //O componente gráfico pega o dado como um "Object" e faz um casting
+        //Casting = conversão de dados não compatíveis e não feitos através do
+        //Automatic Type Conversion do Java
+        //Conversion type: Boolean > Object >>> Object > Boolean
+        tasks.get(rowIndex).setIsCompleted((boolean) aValue);
+        
+    }
 
     public String[] getColumns() {
         return columns;
