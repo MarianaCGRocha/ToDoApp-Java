@@ -8,72 +8,73 @@ import java.util.Date;
 
 /**
  *
- * @author Mariana Rocha
+ * @author emman
  */
-public class Project {
+public class Project{
+        
+        private int id;
+        private String name;
+        private String description;
+        private Date createdAt;
+        private Date updatedAt;
+        
+        public Project(int id, String name, String description, Date createdAt, Date updatedAt) {
+                this.id = id;
+                this.name = name;
+                this.description = description;
+                this.createdAt = createdAt;
+                this.updatedAt = updatedAt;
+        }
+        
+        public Project(){
+                this.createdAt = new Date();
+                this.updatedAt = new Date();
+        }
 
-    private int id;
-    private String name;
-    private String description;
-    private Date createdAt;
-    private Date updatedAt;
+        @Override
+        public String toString() {
+                return this.name;
+        }
 
-    public Project(int id, String name, String description, Date createdAt, Date updatedAt) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
+        public int getId() {
+                return id;
+        }
 
-    public Project() {
-        this.createdAt = new Date();
-        this.updatedAt = new Date();
-    }
+        public void setId(int id) {
+                this.id = id;
+        }
 
-    public int getId() {
-        return id;
-    }
+        public String getName() {
+                return name;
+        }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+        public void setName(String name) {
+                this.name = name;
+        }
 
-    public String getName() {
-        return name;
-    }
+        public String getDescription() {
+                return description;
+        }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+        public void setDescription(String description) {
+                this.description = description;
+        }
 
-    public String getDescription() {
-        return description;
-    }
+        public Date getCreatedAt() {
+                return createdAt;
+        }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+        public void setCreatedAt(Date createdAt) {
+                this.createdAt = createdAt;
+        }
 
-    public Date getCreatedAt() {
-        return createdAt;
-    }
+        public Date getUpdatedAt() {
+                return updatedAt;
+        }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
+        public void setUpdatedAt(Date updatedAt) {
+                this.updatedAt = updatedAt;
+        }
 
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    @Override
-    public String toString() {
-        return this.name;
-    }
-
+        
 }
